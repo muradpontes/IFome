@@ -1,0 +1,55 @@
+<!-- admin.html -->
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+  </head>
+
+  {% block content %}
+
+  <body>
+    <div class="main-container d-flex-column">
+      <h1 class="container-title">Tela de Vendas</h1>
+      <table class="admin-table">
+        <tr class="theader">
+          <th class="th-cell">Nome</th>
+          <th class="th-cell">Semestre</th>
+          <th class="th-cell">Descrição</th>
+          <th class="th-cell">Total</th>
+        </tr>
+        {% for pedido in pedidos %}
+        <tr class="tr-pedido">
+          <td>{{ pedido.nome }}</td>
+          <td>{{ pedido.semestre }}</td>
+          <td>
+            {% for item in pedido[3] | from_json %} {{ item.quantidade }} {{ item.salgado }}  {% if not loop.last %}, {% endif %} {% endfor %}
+          </td>
+          <td>R${{ pedido.total }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <div class="btn-wrapper d-flex">
+        <button class="btn btn-success" onclick="showAlert()" type="submit">
+          Enviar
+        </button>
+        <button
+          onclick="window.location.href='{{ url_for('login') }}'"
+          class="btn btn-danger"
+          href="/"
+          type="submit"
+        >
+          Sair
+        </button>
+      </div>
+    </div>
+    <script>
+      function showAlert() {
+        alert("Pedidos enviados com sucesso!");
+      }
+    </script>
+  </body>
+  {% endblock %}
+</html>

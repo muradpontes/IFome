@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedido</title>
+  </head>
+
+  {% block content %}
+  <body>
+    <div class="pedidos">
+      
+      <h4 class="form-pedido-heading">Monte seu Pedido</h4>
+      <form class="form-pedido" method="POST" action="/pedido">
+        <!-- coxinha -->
+        <div class="input-wrapper">
+          <label for="coxinha">Coxinha</label>
+          <div class="preco-input-wrapper">
+            <input
+              type="number"
+              id="coxinha"
+              name="coxinha"
+              class="quantidade"
+              min="0"
+              value="0"
+            />
+            <span class="preco-label">
+              R$:<span id="coxinha-preco">0</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- pastel carne -->
+        <div class="input-wrapper">
+          <label for="pastel_carne">Pastel de Carne</label>
+          <div class="preco-input-wrapper">
+            <input
+              type="number"
+              id="pastel_carne"
+              name="pastel_carne"
+              class="quantidade"
+              min="0"
+              value="0"
+            />
+            <span class="preco-label">
+              R$:<span id="pastel_carne-preco">0</span>
+            </span>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="pastel_frango">Pastel de Frango</label>
+          <div class="preco-input-wrapper">
+            <input
+              type="number"
+              id="pastel_frango"
+              name="pastel_frango"
+              class="quantidade"
+              min="0"
+              value="0"
+            />
+            <span class="preco-label">
+              R$:<span id="pastel_frango-preco">0</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- pastel queijo -->
+        <div class="input-wrapper">
+          <label for="pastel_queijo">Pastel de Queijo</label>
+          <div class="preco-input-wrapper">
+            <input
+              type="number"
+              id="pastel_queijo"
+              name="pastel_queijo"
+              class="quantidade"
+              min="0"
+              value="0"
+            />
+            <span class="preco-label">
+              R$:<span id="pastel_queijo-preco">0</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Enroladinho -->
+        <div class="input-wrapper">
+          <label for="enroladinho">Enroladinho</label>
+          <div class="preco-input-wrapper">
+            <input
+              type="number"
+              id="enroladinho"
+              name="enroladinho"
+              class="quantidade"
+              min="0"
+              value="0"
+            />
+            <span class="preco-label">
+              R$:<span id="enroladinho-preco">0</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="preco-total-wrapper">
+          <label>Total:</label>
+          <span>R$:<span id="preco-total">0</span> </span>
+        </div>
+
+        <div class="input">
+          <input type="text" placeholder="Insira um cupom" name="cupom" />
+        </div>
+
+        <div class="button-wrapper">
+          <button class="btn btn-success" type="submit">
+            Finalizar Pedido
+          </button>
+          <a class="btn btn-danger" href="/">Voltar</a>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ url_for('static', filename='calculaPreco.js') }}"></script>
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock %}

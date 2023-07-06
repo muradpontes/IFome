@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IFome</title>
+  </head>
+  {% block content %}
+
+  <!-- ARRUMA ISSO AQUI TAMBEM PIO -->
+
+  <!-- JERRY NA ÁREA -->
+  <div class="order-container d-flex-column">
+    <div class="order-wrapper d-flex-column">
+      <div class="order-title d-flex">
+        <h4>Pedido</h4>
+      </div>
+      <div class="order-list-container d-flex-column">
+        {% if descricao_json %} {% for item in descricao_json %}
+        <div class="order-item d-flex">
+          <span>{{ item.salgado }}</span>
+          <span>quantidade: {{ item.quantidade }} </span>
+        </div>
+        {% endfor %} {% endif %}
+      </div>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert-flash">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <div class="order-total-wrapper d-flex">
+        <label>Total:</label>
+        <span>R$ {{ total }}</span>
+      </div>
+      
+      <div class="btn-wrapper">
+        <button class="order-btn" onclick="window.location.href='/'"">Continuar </button>
+      </div>
+
+    </div>
+  </div>
+  {% endblock %}
+</html>

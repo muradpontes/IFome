@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IFome</title>
+  </head>
+  {% block content %}
+  <body>
+    <div class="login">
+      <div class="img-wrapper">
+        <img src="../static/img/logo02.png" alt="IFome" />
+      </div>
+      <div class="formulario">
+        <form class="form-signin" method="POST" action="/">
+          <h4 class="form-signin-heading">Fazer Pedido</h4>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            name="nome"
+            placeholder="Nome"
+            required
+          /><br />
+          <input
+            type="number"
+            class="form-control"
+            id="semestre"
+            name="semestre"
+            placeholder="Semestre"
+            max="8"
+            min="1"
+            required
+          /><br />
+          <button class="btn btn-success" type="submit">Continuar</button>
+          <a style="color: black" href="{{ url_for('login') }}"
+            >Entrar como administrador</a
+          >
+        </form>
+      </div>
+    </div>
+  </body>
+  {% endblock %}
+</html>
